@@ -54,4 +54,4 @@ contract DestroyableToken is StandardToken, Destroyable {
 
         return super.approve(_spender, _value);
     }
-}//END OF MIGRATABLETOKEN
+}//END OF DestroyableToken

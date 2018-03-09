@@ -32,4 +32,4 @@ contract Pausable is Ownable {
         paused = false;
         Unpause();
     }
-}//END OF PAUSABLE
+}//END OF Pausable

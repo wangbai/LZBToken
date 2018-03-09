@@ -22,4 +22,4 @@ contract Destroyable {
      * @dev return total destroyed token value of the owner
      */ 
     function destroyedBalanceOf(address _owner) public view returns (uint256);
-}//END OF MIGRATABLETOKEN
+}//END OF Destroyable

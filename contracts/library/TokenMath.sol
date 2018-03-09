@@ -42,4 +42,4 @@ library TokenMath {
         assert(c >= a);
         return c;
     }
-}//END OF TOKENMATH
+}//END OF TokenMath

@@ -33,4 +33,4 @@ contract ImmigrantToken is DestroyableToken {
 
         Inflow(msg.sender, inflowValue);
     }
-}//END OF MIGRATABLETOKEN
+}//END OF ImmigrantToken

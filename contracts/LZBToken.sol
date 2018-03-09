@@ -37,4 +37,4 @@ contract LZBToken is DestroyableToken, Pausable {
     function approve(address _spender, uint256 _value) onlyNotPaused public returns (bool) {
         return super.approve(_spender, _value);
     }   
-}//END OF LZBTOKEN
+}//END OF LZBToken
