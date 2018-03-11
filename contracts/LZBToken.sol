@@ -5,7 +5,7 @@ import "./token/DestroyableToken.sol";
 
 
 contract LZBToken is DestroyableToken, Pausable {
-    uint256 constant TOTAL_VALUE = 10000;
+    uint256 constant TOTAL_VALUE = 10000 * (10 ** 18);
 
     string public name = "LZBToken";
     string public symbol = "LZBT";
@@ -33,8 +33,4 @@ contract LZBToken is DestroyableToken, Pausable {
     function transferFrom(address _from, address _to, uint256 _value) onlyNotPaused public returns (bool) {
         return super.transferFrom(_from, _to, _value);
     }
-
-    function approve(address _spender, uint256 _value) onlyNotPaused public returns (bool) {
-        return super.approve(_spender, _value);
-    }   
 }//END OF LZBToken
