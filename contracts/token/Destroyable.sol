@@ -9,12 +9,12 @@ contract Destroyable {
 
     /**
      * @dev When transfering  old token to new token, destroy
-     * the msg.sender address from old token forever
+     * the account and token of msg.sender address forever
      */   
     function destroy() public; 
 
     /**
-     * @dev return whether the owner is destroyed
+     * @dev return whether the account of the owner is destroyed
      */ 
     function isDestroyedOf(address _owner) public view returns (bool);
 

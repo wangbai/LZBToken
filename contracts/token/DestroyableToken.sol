@@ -34,6 +34,14 @@ contract DestroyableToken is StandardToken, Destroyable {
         return 0;
     }
 
+    function balanceOf(address _owner) public view returns (uint256 balance) {
+        if (destroyed[_owner]) {
+            return 0;
+        }
+
+        return balances[_owner];
+    }
+
     function transfer(address _to, uint256 _value) public returns (bool) {
         require(!destroyed[msg.sender]);
         require(!destroyed[_to]);
@@ -49,8 +57,9 @@ contract DestroyableToken is StandardToken, Destroyable {
     }
 
     function approve(address _spender, uint256 _value) public returns (bool) {
-        require(!destroyed[msg.sender]);
-        require(!destroyed[_spender]);
+        if (destroyed[msg.sender] || destroyed[_spender]) {
+            return false;
+        }
 
         return super.approve(_spender, _value);
     }
