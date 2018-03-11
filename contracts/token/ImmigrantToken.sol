@@ -29,7 +29,7 @@ contract ImmigrantToken is DestroyableToken {
 
         balances[msg.sender] = balances[msg.sender].add(inflowValue);
         inflowed[msg.sender] = true;
-        totalSupply = totalSupply.add(inflowValue);
+        allSupply = allSupply.add(inflowValue);
 
         Inflow(msg.sender, inflowValue);
     }

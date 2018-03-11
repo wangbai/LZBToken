@@ -17,11 +17,15 @@ contract DestroyableToken is StandardToken, Destroyable {
         require(balances[msg.sender] != 0);
         
         destroyed[msg.sender] = true;
-        totalSupply = totalSupply.sub(balances[msg.sender]);
+        allSupply = allSupply.sub(balances[msg.sender]);
 
         DestroyToken(msg.sender, balances[msg.sender]);
     }
 
+
+    /**
+     * @dev return total destroyed token value of the owner
+     */
     function isDestroyedOf(address _owner) public view returns (bool) {
         return destroyed[_owner];
     }

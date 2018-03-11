@@ -12,16 +12,20 @@ import "../library/TokenMath.sol";
 contract StandardToken is ERC20 {
     using TokenMath for uint256;
     
-    uint256 public totalSupply;
+    uint256 internal allSupply;
     mapping(address => uint256) public balances;
     mapping(address => mapping (address => uint256)) internal allowed;
+
+    function totalSupply() public view returns(uint256) {
+        return allSupply;
+    }
 
     /**
      * @dev Gets the balance of the specified address.
      * @param _owner The address to query the the balance of.
      * @return An uint256 representing the amount owned by the passed address.
      */
-    function balanceOf(address _owner) public view returns (uint256 balance) {
+    function balanceOf(address _owner) public view returns (uint256) {
         return balances[_owner];
     }
 

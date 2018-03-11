@@ -3,7 +3,6 @@ pragma solidity ^0.4.19;
 import "./control/Pausable.sol"; 
 import "./token/DestroyableToken.sol";
 
-
 contract LZBToken is DestroyableToken, Pausable {
     uint256 constant TOTAL_VALUE = 10000 * (10 ** 18);
 
@@ -13,7 +12,7 @@ contract LZBToken is DestroyableToken, Pausable {
     string public code = "LZB 1.0"; 
    
     function LZBToken() public {
-        totalSupply = TOTAL_VALUE;
+        allSupply = TOTAL_VALUE;
         balances[owner] = TOTAL_VALUE;
         Transfer(0x0, owner, TOTAL_VALUE);
     }
