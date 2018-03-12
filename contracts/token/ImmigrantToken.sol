@@ -10,18 +10,18 @@ import "./DestroyableToken.sol";
 contract ImmigrantToken is DestroyableToken {
     using TokenMath for uint256;
 
-    address public emmigrantContractAddress;
+    address public emmigrantTokenContract;
     
     mapping(address => bool) internal inflowed;
     
     event Inflow(address indexed _owner, uint256 _value);  
 
     function inflow() public {
-        require(emmigrantContractAddress != address(0));
+        require(emmigrantTokenContract != address(0));
         require(msg.sender != address(0));
         require(!inflowed[msg.sender]);
         
-        Destroyable et = Destroyable(emmigrantContractAddress);
+        Destroyable et = Destroyable(emmigrantTokenContract);
         et.destroy();
                
         uint256 inflowValue = et.destroyedBalanceOf(msg.sender);
