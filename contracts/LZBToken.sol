@@ -4,12 +4,12 @@ import "./control/Pausable.sol";
 import "./token/DestroyableToken.sol";
 
 contract LZBToken is DestroyableToken, Pausable {
-    uint256 constant TOTAL_VALUE = 10000 * (10 ** 18);
-
-    string public name = "LZBToken";
-    string public symbol = "LZBT";
-    uint256 public decimals = 18;
+    string public constant name = "LZBToken";
+    string public constant symbol = "LZBT";
+    uint256 public constant decimals = 18;
     string public code = "LZB 1.0"; 
+
+    uint256 constant TOTAL_VALUE = (10 ** 8) * (10 ** uint256(decimals));
    
     function LZBToken() public {
         allSupply = TOTAL_VALUE;
