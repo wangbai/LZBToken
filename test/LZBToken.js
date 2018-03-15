@@ -85,7 +85,21 @@ it("should approve the allowance", function() {
         assert.equal(allowance.valueOf(), 8000 * (10 ** 18), "account2 give account1 " +  8000 * (10 ** 18));
         return lzbToken.totalSupply.call();
     }).then(function(totalSupply) {
-        assert.equal(totalSupply, (10 ** 8) * (10 ** 18), "Total supply  has " + (10 ** 8) * (10 ** 18));
+        assert.equal(totalSupply.valueOf(), (10 ** 8) * (10 ** 18), "Total supply  has " + (10 ** 8) * (10 ** 18));
+    });
+});
+
+//Test Destroy
+it("should support to destroy", function() {
+    var lzbToken;
+
+    return LZBToken.deployed().then(function(instance) {
+        lzbToken = instance;
+        return lzbToken.destroy({from: account2});
+    }).then(function(ret) {
+        return lzbToken.totalSupply.call();
+    }).then(function(totalSupply) {
+        assert.equal(totalSupply.valueOf(), 9.9997e+25, "Total supply is right");
     });
 });
 
