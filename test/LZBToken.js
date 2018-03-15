@@ -68,12 +68,21 @@ it("should approve the allowance", function() {
     }).then(function(ret) {
         return  lzbToken.allowance.call(account2, account1);
     }).then(function(allowance) {
-        assert.equal(allowance.valueOf(), 0, "account2 give account1 " +  3000 * (10 ** 18));
+        assert.equal(allowance.valueOf(), 0, "account2 give account1 " + 0);
         
         return lzbToken.approve(account1, 10000 * (10 ** 18), {from: account2});
     }).then(function(ret) {
-        return lzbToken.transferFrom(account2, account1, 2000 * (10 ** 18));
+        return lzbToken.transferFrom(account2, account1, 2000 * (10 ** 18), {from: account1});
     }).then(function(ret) {
+        return lzbToken.balanceOf.call(account1);
+    }).then(function(balance1) {
+        assert.equal(balance1.valueOf(), 3000 * (10 ** 18), "Account1 is right");
+        return lzbToken.balanceOf.call(account2);
+    }).then(function(balance2) {
+        assert.equal(balance2.valueOf(), 3000 * (10 ** 18), "Account2 is right");
+        return lzbToken.allowance.call(account2, account1);
+    }).then(function(allowance) {
+        assert.equal(allowance.valueOf(), 8000 * (10 ** 18), "account2 give account1 " +  8000 * (10 ** 18));
         return lzbToken.totalSupply.call();
     }).then(function(totalSupply) {
         assert.equal(totalSupply, (10 ** 8) * (10 ** 18), "Total supply  has " + (10 ** 8) * (10 ** 18));
