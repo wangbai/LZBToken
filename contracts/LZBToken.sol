@@ -3,11 +3,12 @@ pragma solidity ^0.4.19;
 import "./control/Pausable.sol"; 
 import "./token/DestroyableToken.sol";
 
+
 contract LZBToken is DestroyableToken, Pausable {
     string public constant name = "LZBToken";
     string public constant symbol = "LZBT";
     uint256 public constant decimals = 18;
-    string public code = "LZB 1.0"; 
+    string public constant code = "LZB 1.0"; 
 
     uint256 constant TOTAL_VALUE = (10 ** 8) * (10 ** uint256(decimals));
    
