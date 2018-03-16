@@ -59,12 +59,4 @@ contract DestroyableToken is StandardToken, Destroyable {
 
         return super.transferFrom(_from, _to, _value);
     }
-
-    function approve(address _spender, uint256 _value) public returns (bool) {
-        if (destroyed[msg.sender] || destroyed[_spender]) {
-            return false;
-        }
-
-        return super.approve(_spender, _value);
-    }
 }//END OF DestroyableToken
