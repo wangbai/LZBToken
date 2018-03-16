@@ -48,8 +48,8 @@ it("should put valid tokens in the account of account1 and account2", function()
     }).then(function(balance2) {
         assert.equal(balance2.valueOf(), 5000 * (10 ** 18), "Account2 is right");
         return lzbToken.balanceOf.call(owner);
-    }).then(function(totalSupply) {
-        assert.equal(totalSupply.valueOf(), 9.9994e+25, "Owner is right");
+    }).then(function(balanceOwner) {
+        assert.equal(balanceOwner.valueOf(), 9.9994e+25, "Owner is right");
     });
 });
 
@@ -64,13 +64,11 @@ it("should approve the allowance", function() {
         return lzbToken.allowance.call(account2, account1);
     }).then(function(allowance) {
         assert.equal(allowance.valueOf(), 10000 * (10 ** 18), "account2 give account1 " +  4000 * (10 ** 18));
-   
         return lzbToken.approve(account1, 0, {from: account2});
     }).then(function(ret) {
         return  lzbToken.allowance.call(account2, account1);
     }).then(function(allowance) {
         assert.equal(allowance.valueOf(), 0, "account2 give account1 " + 0);
-        
         return lzbToken.approve(account1, 10000 * (10 ** 18), {from: account2});
     }).then(function(ret) {
         return lzbToken.transferFrom(account2, account1, 2000 * (10 ** 18), {from: account1});
