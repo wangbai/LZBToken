@@ -12,6 +12,7 @@ it("should put all tokens in the owner's account", function() {
     var lzbToken;
     var balanceOfOwner;
     var totalSupply;
+
     return LZBToken.deployed().then(function(instance) {
         lzbToken = instance;
         return lzbToken.balanceOf.call(owner);
@@ -97,6 +98,9 @@ it("should support to destroy", function() {
         lzbToken = instance;
         return lzbToken.destroy({from: account2});
     }).then(function(ret) {
+        return lzbToken.destroyedBalanceOf.call(account2);
+    }).then(function(balance) {
+        assert.equal(balance.valueOf(), 3000 * (10 ** 18), "account2 destroy " + 3000 * (10 ** 18) + " token");
         return lzbToken.totalSupply.call();
     }).then(function(totalSupply) {
         assert.equal(totalSupply.valueOf(), 9.9997e+25, "Total supply is right");
