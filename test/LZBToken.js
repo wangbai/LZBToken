@@ -23,7 +23,7 @@ it("should put all tokens in the owner's account", function() {
         totalSupply = balance.valueOf();
 
         assert.equal(balanceOfOwner, totalSupply, "Initially owner has all");
-        assert.equal(balanceOfOwner, (10 ** 8) * (10 ** 18), "Owner has " + (10 ** 8) * (10 ** 18));
+        assert.equal(balanceOfOwner, (10 ** 8) * (10 ** 18), "Owner has " + (10 ** 8) * (10 ** 18) + " tokens");
     });
 });
 
@@ -40,7 +40,7 @@ it("should put valid tokens in the account of account1 and account2", function()
     }).then(function(balance) {
         totalSupply = balance.valueOf();
 
-        assert.equal(totalSupply, (10 ** 8) * (10 ** 18), "Total supply  has " + (10 ** 8) * (10 ** 18));
+        assert.equal(totalSupply, (10 ** 8) * (10 ** 18), "Total supply  has " + (10 ** 8) * (10 ** 18) + " tokens");
         return lzbToken.balanceOf.call(account1);
     }).then(function(balance1) {
         assert.equal(balance1.valueOf(), 1000 * (10 ** 18), "Account1 is right");
@@ -54,7 +54,7 @@ it("should put valid tokens in the account of account1 and account2", function()
 });
 
 //Test approve and transferFrom
-it("should approve the allowance", function() {
+it("should approve the valid allowance", function() {
     var lzbToken;
 
     return LZBToken.deployed().then(function(instance) {
@@ -63,12 +63,12 @@ it("should approve the allowance", function() {
     }).then(function(ret) {
         return lzbToken.allowance.call(account2, account1);
     }).then(function(allowance) {
-        assert.equal(allowance.valueOf(), 10000 * (10 ** 18), "account2 give account1 " +  4000 * (10 ** 18));
+        assert.equal(allowance.valueOf(), 10000 * (10 ** 18), "account2 gives account1 " +  4000 * (10 ** 18) + " tokens");
         return lzbToken.approve(account1, 0, {from: account2});
     }).then(function(ret) {
         return  lzbToken.allowance.call(account2, account1);
     }).then(function(allowance) {
-        assert.equal(allowance.valueOf(), 0, "account2 give account1 " + 0);
+        assert.equal(allowance.valueOf(), 0, "account2 give account1 " + 0 + " tokens");
         return lzbToken.approve(account1, 10000 * (10 ** 18), {from: account2});
     }).then(function(ret) {
         return lzbToken.transferFrom(account2, account1, 2000 * (10 ** 18), {from: account1});
@@ -81,15 +81,15 @@ it("should approve the allowance", function() {
         assert.equal(balance2.valueOf(), 3000 * (10 ** 18), "Account2 is right");
         return lzbToken.allowance.call(account2, account1);
     }).then(function(allowance) {
-        assert.equal(allowance.valueOf(), 8000 * (10 ** 18), "account2 give account1 " +  8000 * (10 ** 18));
+        assert.equal(allowance.valueOf(), 8000 * (10 ** 18), "account2 gives account1 " +  8000 * (10 ** 18) + " tokens");
         return lzbToken.totalSupply.call();
     }).then(function(totalSupply) {
-        assert.equal(totalSupply.valueOf(), (10 ** 8) * (10 ** 18), "Total supply  has " + (10 ** 8) * (10 ** 18));
+        assert.equal(totalSupply.valueOf(), (10 ** 8) * (10 ** 18), "Total supply  has " + (10 ** 8) * (10 ** 18) + " tokens");
     });
 });
 
 //Test Destroy
-it("should support to destroy", function() {
+it("should support to destroy tokens", function() {
     var lzbToken;
 
     return LZBToken.deployed().then(function(instance) {
@@ -98,7 +98,7 @@ it("should support to destroy", function() {
     }).then(function(ret) {
         return lzbToken.destroyedBalanceOf.call(account2);
     }).then(function(balance) {
-        assert.equal(balance.valueOf(), 3000 * (10 ** 18), "account2 destroy " + 3000 * (10 ** 18) + " token");
+        assert.equal(balance.valueOf(), 3000 * (10 ** 18), "account2 destroyes " + 3000 * (10 ** 18) + " tokens");
         return lzbToken.totalSupply.call();
     }).then(function(totalSupply) {
         assert.equal(totalSupply.valueOf(), 9.9997e+25, "Total supply is right");
