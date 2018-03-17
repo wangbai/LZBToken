@@ -1,2 +1,4 @@
-# LZBToken
-Smart contract for LZBToken which is applied to ERC20
+# LZBToken and test suite
+
+## Dependency
+1. truffle
