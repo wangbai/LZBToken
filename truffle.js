@@ -11,6 +11,11 @@ module.exports = {
             host: "localhost", // Connect to geth on the specified
             port: 8545,
             network_id: 4
+        },
+        live: {
+            host: "localhost", // Connect to geth on the specified
+            port: 30303,
+            network_id: 1
         }
     },
     solc: {
