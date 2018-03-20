@@ -8,13 +8,13 @@ module.exports = {
             network_id: "*" // Match any network id
         },
         rinkeby: {
-            host: "localhost", // Connect to geth on the specified
+            host: "localhost",
             port: 8545,
             network_id: 4
         },
         live: {
-            host: "localhost", // Connect to geth on the specified
-            port: 30303,
+            host: "localhost",
+            port: 8545,
             network_id: 1
         }
     },
