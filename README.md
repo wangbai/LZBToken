@@ -5,3 +5,4 @@ LZBToken is a kind of token which is applied to ERC20
 
 ## Dependency
 > npm i -g truffle
+> npm i -g commander
