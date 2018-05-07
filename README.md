@@ -1,4 +1,4 @@
-# LZBToken and test suite
+# LZBToken
 
 ## Description
 LZBToken is a kind of token which is applied to ERC20
